@@ -25,7 +25,7 @@ const Header = () => {
           {/* Left Part (username and user icon) */}
           <div className="flex mt-3">
             <img className="ml-5 h-10" src={UserIcon} />
-            <h1 className="mt-2 ml-3">Hi,james</h1>
+            <h1 className="mt-2 ml-3">Hi,Naeem</h1>
           </div>
           {/* center (the logo) */}
           <div className="mr-20 mb-2 ">

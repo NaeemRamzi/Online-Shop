@@ -12,6 +12,9 @@ module.exports = {
         100:"#424242",
         200:"#C7C7C7"
       },
+      blue: {
+        100:"#2C6DC1"
+      },
       purple: "#3f3cbb",
       midnight: "#121063",
       metal: "#565584",
@@ -19,7 +22,11 @@ module.exports = {
       silver: "#ecebff",
       bermuda: "#78dcca",
     },
-    extend: {},
+    extend: {
+      height: {
+        "128": "850px",
+      }
+    },
   },
   plugins: [],
 };
