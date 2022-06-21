@@ -28,7 +28,7 @@ const Header = () => {
             <h1 className="mt-2 ml-3">Hi,Naeem</h1>
           </div>
           {/* center (the logo) */}
-          <div className="mr-20 mb-2 ">
+          <div className="xl:mr-20px lg:mr-20px md:mr-20px sm:mr-20px xs:mr-0 mb-2 ">
             <HeaderLogo />
           </div>
           {/* Right Part Cart button and the cart icon */}
