@@ -3,6 +3,7 @@ import HeaderLogo from "./HeaderLogo";
 import UserIcon from "../../assets/user.png";
 import ThreeDots from "../../assets/ellipsis.png";
 import CartLogo from "../../assets/shopping-cart.png";
+import Cart from "../Cart/Cart";
 
 const Header = () => {
   return (
@@ -33,7 +34,7 @@ const Header = () => {
           </div>
           {/* Right Part Cart button and the cart icon */}
           <div className="flex mr-10">
-            <button className="mr-1">Cart</button>
+            <button className="mr-1" onClick={Cart}>Cart</button>
             <img className="h-10 mt-4" src={CartLogo} />
           </div>
         </div>

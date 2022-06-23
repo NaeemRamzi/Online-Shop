@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 // eslint-disable-next-line no-undef
 const defaultTheme = require("tailwindcss/defaultTheme");
@@ -63,7 +64,7 @@ module.exports = {
     },
     extend: {
       spacing: {
-        128: "27rem",
+        128: "28.5rem",
         120: "24rem",
         84: "22rem",
       },
@@ -75,5 +76,6 @@ module.exports = {
   plugins: [
     // eslint-disable-next-line no-undef
     require("tailwind-scrollbar"),
+    require("@tailwindcss/line-clamp"),
   ],
 };
