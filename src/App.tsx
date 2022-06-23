@@ -1,18 +1,24 @@
-import React, { Fragment } from "react";
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
+import Cart from "./components/Cart/Cart";
 import ImgCardHandler from "./components/ImgCard/ImgCardHandler";
-import ImgSearch from "./components/ImgCard/ImgSearch";
 import Header from "./components/Layout/Header";
 
 function App() {
   return (
-   <Fragment>
+    <Router>
       <Header />
-      <ImgSearch/>
-      <ImgCardHandler/>
-    </Fragment>
+      <Switch>
+        <Route exact path="/">
+          <ImgCardHandler />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
