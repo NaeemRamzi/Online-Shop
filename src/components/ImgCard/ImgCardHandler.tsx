@@ -33,7 +33,7 @@ const ImgCardHandler = () => {
         </div>
 
         {isLoading ? (
-          <h1 className="text-6xl text-center mx-auto mt-40 italic">
+          <h1 className="text-6xl text-center mx-auto mt-40 ">
             <CircularProgress />
           </h1>
         ) : (

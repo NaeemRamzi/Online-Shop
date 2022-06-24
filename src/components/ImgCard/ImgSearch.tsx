@@ -1,9 +1,6 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 
-const ImgSearch = ({ onSearch  }: any) => {
-
-    //const [text, setText] = useState("");
-
+const ImgSearch = ({ onSearch }: any) => {
   return (
     <Fragment>
       <div className="flex  justify-start ">
