@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import ImgCard from "./ImgCard";
-import { ITypes } from "../Interface/types";
+import ITypes from "../Interface/types";
 import { CircularProgress, Button } from "@mui/material";
 import Category from "./Category";
 import ImgSearch from "./ImgSearch";

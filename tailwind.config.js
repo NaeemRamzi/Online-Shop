@@ -57,6 +57,9 @@ module.exports = {
       blue: {
         100: "#2C6DC1",
       },
+      red:{
+        100: "#E25141"
+      },
       purple: "#3f3cbb",
       midnight: "#121063",
       metal: "#565584",

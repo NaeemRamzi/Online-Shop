@@ -1,54 +1,25 @@
 import React from "react";
 
-
 const Cart = () => {
+  const random = Math.random();
+  const cartItems = <ul>{[
+    {
+      id: 1,
+      name: "brown jacket",
+      description: "a warm jacket",
+      amount: 2,
+      price: 19.99,
+    },
+  ].map((item) => <li key={random}>{item.name}</li>)}</ul>;
   return (
-    <table className="table-fixed w-full mt-16 border-2 text-center">
-  <thead>
-    <tr className="bg-gray-300" >
-      <th className="p-5">Number</th>
-      <th className="p-5">Title</th>
-      <th className="p-5">Descrption</th>
-      <th className="p-5">Quantity</th>
-      <th className="p-5">Price</th>
-      <th className="p-5">Total Price</th>
-    </tr>
-  </thead>
-  <tbody className="p-5">
-    <tr className="bg-white-400" >
-      <td className="p-5">1</td>
-      <td className="p-5">Product 1 </td>
-      <td className="p-5">descrption</td>
-      <td className="p-5">1</td>
-      <td className="p-5">0.0$</td>
-      <td className="p-5">0.0$</td>
-    </tr>
-    <tr>
-      <td className="p-5">2</td>
-      <td className="p-5">Product 2</td>
-      <td className="p-5">descrption</td>
-      <td className="p-5">1</td>
-      <td className="p-5">0.0$</td>
-      <td className="p-5">0.0$</td>
-    </tr>
-    <tr className="bg-white-400">
-      <td className="p-5">3</td>
-      <td className="p-5">Product 3</td>
-      <td className="p-5">descrption</td>
-      <td className="p-5">1</td>
-      <td className="p-5">0.0$</td>
-      <td className="p-5">0.0$</td>
-    </tr>
-    <tr>
-      <td className="p-5">Total</td>
-      <td className="p-5"></td>
-      <td className="p-5"></td>
-      <td className="p-5"></td>
-      <td className="p-5"></td>
-      <td className="p-5">0.0$</td>
-    </tr>
-  </tbody>
-</table>
+    <div className="text-center bg-white-400">
+      {cartItems}
+      <div>
+        <span>Total amount:</span>
+        <span>57.29</span>
+      </div>
+      <div></div>
+    </div>
   );
 };
 

@@ -41,6 +41,7 @@ const Header = () => {
               <a className="mr-1 hover:underline" href="/cart">
                 Cart
               </a>
+              <span className="p-2 rounded-full bg-red-100">3</span>
             </button>
             <img className="h-10 mt-4" src={CartLogo} />
           </div>
