@@ -1,7 +1,30 @@
+/* eslint-disable react/prop-types */
+import { useContext } from "react";
 import React, { Fragment } from "react";
 import ITypes from "../Interface/types";
+import CartContext from "../../store/cart-context";
+import ProductsForm from "./ProductsForm";
 
-const ImgCard: React.FC<{ values: ITypes }> = (props) => {
+const ImgCard: React.FC<{
+  [x: string]: any; values: ITypes 
+}> = (props) => {
+
+  const cartCtx = useContext(CartContext);
+
+  
+  const addToCartHandler = (amount:any) =>{
+    cartCtx.addItem({
+      id: props.values.id,
+      title: props.values.title,
+      category: props.values.category,
+      description: props.values.description,
+      image: "",
+      price: props.values.price,
+      amount:amount,
+    });
+  };
+
+  
   return (
     <Fragment>
       <div className="xl:h-128 xl:w-120 mt-10 m-auto shadow-xl lg:h-96 lg:w-80 md:h-72 md:w-60 sm:h-64  sm:w-52 xs:h-64 xs:w-60 ">
@@ -21,9 +44,9 @@ const ImgCard: React.FC<{ values: ITypes }> = (props) => {
               <div className="bg-white-100 p-2 lg:text-base md:text-sm sm:text-xxs  xs:text-xxs  ">
                 Price: {props.values.price}$
               </div>
-              <button className="bg-blue-100 p-2 text-white-100 lg:text-base md:whitespace-nowrap md:text-sm sm:whitespace-nowrap sm:text-xxs xs:text-xxs ">
-                Add to card
-              </button>
+              <div>
+              <ProductsForm id={props.id} onAddToCart={addToCartHandler} />
+              </div>
             </div>
           </div>
         </div>

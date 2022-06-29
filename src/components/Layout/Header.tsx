@@ -3,9 +3,18 @@ import HeaderLogo from "./HeaderLogo";
 import UserIcon from "../../assets/user.png";
 import ThreeDots from "../../assets/ellipsis.png";
 import CartLogo from "../../assets/shopping-cart.png";
+import { useContext } from "react";
+import CartContext from "../../store/cart-context";
+import ITypes from "../Interface/types";
+import { Link } from "react-router-dom";
 
+const Header: React.FC = (props) => {
+  const cartCtx = useContext(CartContext);
 
-const Header = () => {
+  const numberOfCartItems = cartCtx.items.reduce((curNumber:any,item)=>{
+    curNumber + item.amount;
+  } , 0);
+
   return (
     <Fragment>
       {/* top of the header (black part)  */}
@@ -18,9 +27,9 @@ const Header = () => {
             <p>Show title</p>
           </div>
           <div className="text-white-100  ">
-            <a className="hover:underline" href="/">
+            <Link className="hover:underline" to="/" >
               Home
-            </a>
+            </Link>
           </div>
         </div>
         {/* main header */}
@@ -29,7 +38,6 @@ const Header = () => {
           <div className="flex mt-3">
             <img className="ml-5 h-10" src={UserIcon} />
             <h1 className="mt-2 ml-3">Hi,Naeem </h1>
-
           </div>
           {/* center (the logo) */}
           <div className="xl:mr-20px lg:mr-20px md:mr-20px sm:mr-20px xs:mr-0 mb-2 ">
@@ -38,10 +46,10 @@ const Header = () => {
           {/* Right Part Cart button and the cart icon */}
           <div className="flex mr-10">
             <button className="mr-1">
-              <a className="mr-1 hover:underline" href="/cart">
+              <Link className="mr-1 hover:underline" to="/cart" >
                 Cart
-              </a>
-              <span className="p-2 rounded-full bg-red-100">3</span>
+              </Link>
+              <span className="p-2 rounded-full bg-red-100">{numberOfCartItems}</span>
             </button>
             <img className="h-10 mt-4" src={CartLogo} />
           </div>

@@ -4,14 +4,14 @@ import ITypes from "../components/Interface/types";
 
 type contextType = {
     items: ITypes[];
-    totalAmount: number[];
+    totalAmount: number;
     addItem: (item: ITypes) => void;
     removeItem: (id: number) => void;
   };
 
 const CartContext = React.createContext<contextType>({
   items: [],
-  totalAmount: [],
+  totalAmount: 0,
   addItem: () => {},
   removeItem: () => {},
 });

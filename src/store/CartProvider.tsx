@@ -1,27 +1,46 @@
-/* eslint-disable react/prop-types */
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useReducer } from "react";
 import CartContext from "./cart-context";
 import ITypes from "../components/Interface/types";
 
-type contextType  = {
+type contextType = {
   items: ITypes[];
-  totalAmount: number[];
+  totalAmount: number;
   addItem: (item: ITypes) => void;
   removeItem: (id: number) => void;
 };
 
+const defaultCartState = {
+  items: [],
+  totalAmount: 0,
+};
+
+const cartReducer = (state: any, action: any) => {
+  if( action.type === "ADD" ){
+    const updatedItems = state.items.concat(action.item);
+    const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
+    return {
+      items:updatedItems,
+      totalAmount:updatedTotalAmount
+    };
+  }
+  return defaultCartState;
+};
+// mainFN
 const CartProvider: React.FC<PropsWithChildren> = (props) => {
+
+  const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
+
   const addItemToCartHandler = (item: ITypes) => {
-    return;
+    dispatchCartAction({type:"ADD", item:item});
   };
 
   const removeItemFromCartHandler = (id: number) => {
-    return;
+    dispatchCartAction({type:"ADD", id:id});
   };
 
   const cartContext: contextType = {
-    items: [],
-    totalAmount: [0],
+    items: cartState.items,
+    totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
   };
