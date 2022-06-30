@@ -7,8 +7,11 @@ import ImgSearch from "./ImgSearch";
 
 const ImgCardHandler = () => {
   const [fake, setFake] = useState<ITypes[]>([]);
+  // const [category, setCategory] = useState<ITypes[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  // const [categoryTerm, setCategoryTerm] = useState("");
+  
 
   useEffect(() => {
     const fakestore = async () => {
@@ -20,16 +23,33 @@ const ImgCardHandler = () => {
     fakestore();
   }, []);
 
+  // useEffect(() => {
+  //   const Category = async () => {
+  //     const response = await fetch(
+  //       "https://fakestoreapi.com/products/categories"
+  //     );
+  //     const data = await response.json();
+  //     console.log(data);
+  //     setCategory(data);
+  //   };
+  //   Category();
+  // });
+
+ 
+
   const onSearch = (searchTerm: string) => {
     setSearchTerm(searchTerm);
   };
+  // const onSelect = (searchTerm: string) => {
+  //   setCategoryTerm(searchTerm);
+  // };
 
   return (
     <Fragment>
       <div className="container  mx-auto ">
         <div className="flex  justify-between ">
           <ImgSearch onSearch={onSearch} />
-          <Category />
+          {/* <Category onSelect={onSelect} /> */}
         </div>
 
         {isLoading ? (
@@ -51,6 +71,20 @@ const ImgCardHandler = () => {
               .map((values) => {
                 return <ImgCard key={values.id} values={values} />;
               })}
+
+              {/* {category
+              .filter((val) => {
+                if (categoryTerm === "") {
+                  return val;
+                } else if (
+                  val.category.includes(categoryTerm)
+                ) {
+                  return val;
+                }
+              })
+              .map((values) => {
+                return <ImgCard key={values.id} values={values} />;
+              })} */}
           </div>
         )}
       </div>

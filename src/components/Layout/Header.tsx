@@ -9,12 +9,12 @@ import ITypes from "../Interface/types";
 import { Link } from "react-router-dom";
 // our first branch
 
-const Header: React.FC = (props) => {
+const Header: React.FC = () => {
   const cartCtx = useContext(CartContext);
 
-  const numberOfCartItems = cartCtx.items.reduce((curNumber:any,item)=>{
-    curNumber + item.amount;
-  } , 0);
+  const numberOfCartItems = cartCtx.items.reduce((curNumber: number, item) => {
+    return curNumber + item.amount;
+  }, 0);
 
   return (
     <Fragment>
@@ -28,7 +28,7 @@ const Header: React.FC = (props) => {
             <p>Show title</p>
           </div>
           <div className="text-white-100  ">
-            <Link className="hover:underline" to="/" >
+            <Link className="hover:underline" to="/">
               Home
             </Link>
           </div>
@@ -46,11 +46,13 @@ const Header: React.FC = (props) => {
           </div>
           {/* Right Part Cart button and the cart icon */}
           <div className="flex mr-10">
-            <button className="mr-1">
-              <Link className="mr-1 hover:underline" to="/cart" >
+            <button className="mr-1 mt-6 flex">
+              <Link className="mr-1 hover:underline" to="/cart">
                 Cart
               </Link>
-              <span className="p-2 rounded-full bg-red-100">{numberOfCartItems}</span>
+              <p className=" w-7 h-6 text-white-100  rounded-full  bg-red-100">
+                {numberOfCartItems}
+              </p>
             </button>
             <img className="h-10 mt-4" src={CartLogo} />
           </div>

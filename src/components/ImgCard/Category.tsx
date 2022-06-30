@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect,useState } from "react";
 
-const Category = () => {
+const Category = ({ onSelect }: any) => {
+  
   useEffect(() => {
     const Category = async () => {
       const response = await fetch(
@@ -19,6 +20,9 @@ const Category = () => {
         name="cars"
         id="cars"
         className="mr-16 text-center border-b-2 w-52 hover:bg-white-200"
+        onChange={(event) => {
+          onSelect(event.target.value);
+        }}
       >
         <option value="all">All</option>
         <option value="electronics">Electronics</option>
