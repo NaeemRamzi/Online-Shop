@@ -1,24 +1,37 @@
-import React from "react";
-import classes from "./CartItem.module.css";
+import React, { Fragment, useContext } from "react";
+import CartContext from "../../store/cart-context";
 
-const CartItem = (props:any) => {
+const CartItem = (props: any) => {
   const price = `$${props.price.toFixed(2)}`;
+  const cartCtx = useContext(CartContext);
+  
 
   return (
-    <li className={classes["cart-item"]}>
-      <div className="text-left">
-        <span className="flex"><h1 className="font-bold mr-2">Title:</h1><h2>{props.title}</h2></span>
-        <span className="flex"><h1 className="font-bold">Description:</h1><p className="ml-2  line-clamp-1">{props.description}</p></span>
-        <div className={classes.summary}>
-          <span className={classes.price}>Price: {price}</span>
-          <span className={classes.amount}>Amount: {props.amount}</span>
+    <Fragment>
+      <div className=" w-full flex justify-around   bg-white-400 odd:bg-gray-400 even:bg-white-100 border-b-2 border-black-100">
+        <div className="p-5 ml-5  ">
+          <h1>1</h1>
+        </div>
+
+        <div className="p-5  w-2/12">
+          <h1 className="text-left line-clamp-1 w-48 ml-36 font-semibold">{props.title}</h1>
+        </div>
+        <div className=" p-5  w-2/12">
+          <p className="text-left line-clamp-1 w-56 ml-44 font-normal">{props.description}</p>
+        </div>
+        <div className="p-5 flex  w-2/12 ml-64 font-semibold">
+          <button onClick={props.onRemove} className="w-7 h-7 text-white-100  rounded-full  bg-red-100 ml-5 mr-1">−</button>
+          <h1>{props.amount}</h1>
+          <button onClick={props.onAdd} className="w-7 h-7 text-white-100  rounded-full  bg-blue-200 ml-1">+</button>
+        </div>
+        <div className="p-5 w-2/12 ml-44">
+          <h1> {price}</h1>
+        </div>
+        <div className="p-5 w-2/12 ml-44 font-bold">
+          <h1> {price}</h1>
         </div>
       </div>
-      <div className={classes.actions}>
-        <button onClick={props.onRemove}>−</button>
-        <button onClick={props.onAdd}>+</button>
-      </div>
-    </li>
+    </Fragment>
   );
 };
 

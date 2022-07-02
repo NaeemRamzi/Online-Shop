@@ -2,6 +2,8 @@
 import React, { useContext } from "react";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
+import CartTable from "../UI/CartTable";
+import CartFooter from "../UI/CartFooter";
 
 const Cart = () => {
   const cartCtx = useContext(CartContext);
@@ -12,12 +14,11 @@ const Cart = () => {
   };
 
   const cartItemAddHandler = (item: any) => {
-    cartCtx.addItem({...item, amount:1});
+    cartCtx.addItem({ ...item, amount: 1 });
   };
 
-  
   const cartItems = (
-    <ul>
+    <div>
       {cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
@@ -29,16 +30,13 @@ const Cart = () => {
           onAdd={cartItemAddHandler.bind(null, item)}
         />
       ))}
-    </ul>
+    </div>
   );
   return (
-    <div className="text-center bg-white-400">
-      {cartItems}
-      <div>
-        <span>Total amount:</span>
-        <span>{totalAmount}</span>
-      </div>
-      <div></div>
+    <div className=" border-2 m-2 border-black-100">
+      <CartTable />
+      <div> {cartItems} </div>
+      <CartFooter />
     </div>
   );
 };
