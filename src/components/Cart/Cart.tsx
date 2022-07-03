@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 import CartTable from "../UI/CartTable";
@@ -7,6 +7,9 @@ import CartFooter from "../UI/CartFooter";
 
 const Cart = () => {
   const cartCtx = useContext(CartContext);
+
+  const [renderdItems, setRenderdItems] = useState([]);
+
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 
   const cartItemRemoveHandler = (id: number) => {
@@ -16,14 +19,19 @@ const Cart = () => {
   const cartItemAddHandler = (item: any) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
+  const itemTotal = (price: any) => {
+    cartCtx.itemTotal(price);
+  };
 
   const cartItems = (
     <div>
-      {cartCtx.items.map((item) => (
+      {cartCtx.items.map((item, i) => (
         <CartItem
+          number={i}
           key={item.id}
           title={item.title}
           amount={item.amount}
+          itemTotal={item.itemTotal}
           price={item.price}
           description={item.description}
           onRemove={cartItemRemoveHandler.bind(null, item.id)}

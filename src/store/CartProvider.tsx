@@ -5,6 +5,7 @@ import ITypes from "../components/Interface/types";
 type contextType = {
   items: ITypes[];
   totalAmount: number;
+  itemTotal:any;
   addItem: (item: ITypes) => void;
   removeItem: (id: number) => void;
 };
@@ -12,6 +13,7 @@ type contextType = {
 const defaultCartState = {
   items: [],
   totalAmount: 0,
+  itemTotal:0
 };
 
 const cartReducer = (state: any, action: any) => {
@@ -19,7 +21,7 @@ const cartReducer = (state: any, action: any) => {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
     const updatedTotalAmountOfSingleProduct =
-       action.item.price * action.item.amount;
+    action.item.price * action.item.amount;
     const existingCartItemIndex = state.items.findIndex(
       (item: any) => item.id === action.item.id
     );
@@ -84,6 +86,7 @@ const CartProvider: React.FC<PropsWithChildren> = (props) => {
   const cartContext: contextType = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
+    itemTotal: cartState.itemTotal,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
   };

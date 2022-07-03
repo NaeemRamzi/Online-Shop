@@ -1,18 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { Fragment, useEffect,useState } from "react";
+import React, { Fragment, useEffect, useState, useRef } from "react";
 
-const Category = ({ onSelect }: any) => {
+const Category = ({ categoryTerm,changeCategory }: any) => {
   
-  useEffect(() => {
-    const Category = async () => {
-      const response = await fetch(
-        "https://fakestoreapi.com/products/categories"
-      );
-      const data = await response.json();
-      console.log(data);
-    };
-    Category();
-  });
+
+
 
   return (
     <Fragment>
@@ -20,9 +12,8 @@ const Category = ({ onSelect }: any) => {
         name="cars"
         id="cars"
         className="mr-16 text-center border-b-2 w-52 hover:bg-white-200"
-        onChange={(event) => {
-          onSelect(event.target.value);
-        }}
+        value={categoryTerm}
+        onChange={(e) => changeCategory(e.target.value)}
       >
         <option value="all">All</option>
         <option value="electronics">Electronics</option>
