@@ -28,7 +28,7 @@ const ImgCard: React.FC<{
   
   return (
     <Fragment>
-      <div className="xl:h-128 xl:w-120 mt-10 m-auto shadow-xl lg:h-96 lg:w-80 md:h-72 md:w-60 sm:h-64  sm:w-52 xs:h-64 xs:w-60 ">
+      <div className="xl:h-128 xl:w-120 mt-10 m-auto shadow-xl lg:h-96 lg:w-80 md:h-72 md:w-60 sm:h-72  sm:w-52 xs:h-72 xs:w-60 ">
         <div className="xl:max-w-sm rounded overflow-hidden">
           <img
             src={props.values.image}
