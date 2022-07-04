@@ -41,9 +41,6 @@ const ImgCardHandler = (props: any) => {
   const onSearch = (searchTerm: string) => {
     setSearchTerm(searchTerm);
   };
-  // const onSelect = (searchTerm: string) => {
-  //   setCategoryTerm(searchTerm);
-  // };
 
   const categortSelection = fake.filter((products) => {
     if (categoryTerm === "all") {
@@ -68,12 +65,13 @@ const ImgCardHandler = (props: any) => {
   return (
     <Fragment>
       <div className="container  mx-auto ">
-        <div className="flex  justify-between ">
+        <div className="flex justify-between    ">
           <ImgSearch onSearch={onSearch} />
           <Category
             categoryTerm={categoryTerm}
             changeCategory={changeCategory}
           />
+
         </div>
 
         {isLoading ? (

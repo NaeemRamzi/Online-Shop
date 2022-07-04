@@ -16,6 +16,8 @@ const Cart = () => {
     cartCtx.removeItem(id);
   };
 
+  
+
   const cartItemAddHandler = (item: any) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };

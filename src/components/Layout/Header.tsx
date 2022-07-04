@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import HeaderLogo from "./HeaderLogo";
 import UserIcon from "../../assets/user.png";
 import ThreeDots from "../../assets/ellipsis.png";
@@ -10,11 +10,23 @@ import { Link } from "react-router-dom";
 // our first branch
 
 const Header: React.FC = () => {
+  const [user, setUser] = useState<ITypes[]>([]);
   const cartCtx = useContext(CartContext);
 
   const numberOfCartItems = cartCtx.items.reduce((curNumber: number, item) => {
     return curNumber + item.amount;
   }, 0);
+
+  useEffect(() => {
+    const fakestore = async () => {
+      const response = await fetch("https://fakestoreapi.com/users/1");
+      const data = await response.json();
+      console.log(data);
+
+      setUser(data);
+    };
+    fakestore();
+  }, []);
 
   return (
     <Fragment>
