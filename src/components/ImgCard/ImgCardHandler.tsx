@@ -19,7 +19,7 @@ const ImgCardHandler = (props: any) => {
     const fakestore = async () => {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
-      console.log(data);
+      
 
       setFake(data);
       setIsLoading(false);
@@ -27,16 +27,7 @@ const ImgCardHandler = (props: any) => {
     fakestore();
   }, []);
 
-  useEffect(() => {
-    const Category = async () => {
-      const response = await fetch(
-        "https://fakestoreapi.com/products/categories"
-      );
-      const data = await response.json();
-      console.log(data);
-    };
-    Category();
-  });
+ 
 
   const onSearch = (searchTerm: string) => {
     setSearchTerm(searchTerm);

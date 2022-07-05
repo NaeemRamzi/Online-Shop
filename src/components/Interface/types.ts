@@ -9,4 +9,5 @@ export default interface ITypes {
   price: number;
   title: string;
   amount: number;
+  name:string;
 };

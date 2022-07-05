@@ -22,6 +22,7 @@ const ImgCard: React.FC<{
       price: props.values.price,
       amount: amount,
       itemTotal: props.itemTotal,
+      name: ""
     });
   };
 

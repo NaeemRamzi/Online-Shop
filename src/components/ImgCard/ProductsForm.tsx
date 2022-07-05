@@ -1,7 +1,7 @@
 import React from "react";
 import { useRef, useState, Fragment } from "react";
 
-import Input from "./Input";
+import Input from "../UI/Input";
 
 const MealItemForm = (props: any) => {
   const [count, setCount] = useState(0);
