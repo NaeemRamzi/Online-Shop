@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-extra-semi */
 /* eslint-disable semi */
 export default interface ITypes {
+  itemTotal: any;
   id: number;
   category: string;
   description: string;
@@ -8,4 +9,5 @@ export default interface ITypes {
   price: number;
   title: string;
   amount: number;
-};
+  name: string;
+}

@@ -1,26 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment } from "react";
 
-const Category = () => {
-  useEffect(() => {
-    const Category = async () => {
-      const response = await fetch(
-        "https://fakestoreapi.com/products/categories"
-      );
-      const data = await response.json();
-      console.log(data);
-    };
-    Category();
-  });
-
+const Category = ({ categoryTerm, changeCategory }: any) => {
   return (
     <Fragment>
       <select
         name="cars"
         id="cars"
-        className="mr-16 text-center border-b-2 w-52 hover:bg-white-200"
+        className="text-center  w-72 text-gray-600 border-2 rounded-full border-gray-200  mt-2 xl:mr-14  hover:bg-white-200"
+        value={categoryTerm}
+        onChange={(e) => changeCategory(e.target.value)}
       >
-        <option value="all">All</option>
+        <option value="all">Categories</option>
         <option value="electronics">Electronics</option>
         <option value="jewelery">Jewelery</option>
         <option value="men's clothing">Men's clothing</option>
@@ -30,4 +21,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default React.memo(Category);

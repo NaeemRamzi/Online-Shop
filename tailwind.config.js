@@ -4,7 +4,11 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+  ],
+
   theme: {
     fontSize: {
       "3xs": ".65rem",
@@ -54,11 +58,15 @@ module.exports = {
         200: "#C7C7C7",
         300: "#9B9B9B",
       },
+      black: {
+        100: "#000000",
+      },
       blue: {
         100: "#2C6DC1",
+        200: "#116CC7",
       },
-      red:{
-        100: "#E25141"
+      red: {
+        100: "#E25141",
       },
       purple: "#3f3cbb",
       midnight: "#121063",
@@ -82,5 +90,6 @@ module.exports = {
     // eslint-disable-next-line no-undef
     require("tailwind-scrollbar"),
     require("@tailwindcss/line-clamp"),
+    // require("flowbite/plugin"),
   ],
 };

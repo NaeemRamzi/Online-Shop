@@ -5,6 +5,7 @@ import "./App.css";
 import Cart from "./components/Cart/Cart";
 import ImgCardHandler from "./components/ImgCard/ImgCardHandler";
 import Header from "./components/Layout/Header";
+
 import CartProvider from "./store/CartProvider";
 
 function App() {
