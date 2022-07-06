@@ -4,15 +4,15 @@ import React, { Fragment } from "react";
 import ITypes from "../Interface/types";
 import CartContext from "../../store/cart-context";
 import ProductsForm from "./ProductsForm";
+import { Tooltip } from "@mui/material";
 
 const ImgCard: React.FC<{
-  [x: string]: any; values: ITypes 
+  [x: string]: any;
+  values: ITypes;
 }> = (props) => {
-
   const cartCtx = useContext(CartContext);
 
-  
-  const addToCartHandler = (amount:any) =>{
+  const addToCartHandler = (amount: any) => {
     cartCtx.addItem({
       id: props.values.id,
       title: props.values.title,
@@ -20,23 +20,27 @@ const ImgCard: React.FC<{
       description: props.values.description,
       image: "",
       price: props.values.price,
-      amount:amount,
+      amount: amount,
+      itemTotal: props.itemTotal,
+      name: "",
     });
   };
 
-  
   return (
     <Fragment>
-      <div className="xl:h-128 xl:w-120 mt-10 m-auto shadow-xl lg:h-96 lg:w-80 md:h-72 md:w-60 sm:h-64  sm:w-52 xs:h-64 xs:w-60 ">
+      <div className="xl:h-128 xl:w-120 mt-10 m-auto shadow-xl lg:h-96 lg:w-80 md:h-72 md:w-60 sm:h-72  sm:w-52 xs:h-72 xs:w-60 ">
         <div className="xl:max-w-sm rounded overflow-hidden">
           <img
             src={props.values.image}
             className="xl:w-96 xl:h-64 lg:w-96 lg:h-40 md:w-96  md:h-28 sm:w-96 sm:h-28 object-contain xs:w-96 xs:h-28 "
           />
           <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2  whitespace-nowrap text-ellipsis overflow-hidden text-center lg:text-base  md:text-sm sm:text-xs  xs:text-xxs">
-              <h1>{props.values.title}</h1>
-            </div>
+            <Tooltip title={props.values.title} placement="top">
+              <div className="font-bold text-xl mb-2   whitespace-nowrap text-ellipsis overflow-hidden text-center lg:text-base  md:text-sm sm:text-xs  xs:text-xxs">
+                <h1 className="truncate">{props.values.title}</h1>
+              </div>
+            </Tooltip>
+
             <div className="lg:p-2 lg:text-base  md:text-sm sm:text-xs sm:pr-4  xs:text-xxs">
               <p className="line-clamp-3">{props.values.description}</p>
             </div>
@@ -45,7 +49,7 @@ const ImgCard: React.FC<{
                 Price: {props.values.price}$
               </div>
               <div>
-              <ProductsForm id={props.id} onAddToCart={addToCartHandler} />
+                <ProductsForm id={props.id} onAddToCart={addToCartHandler} />
               </div>
             </div>
           </div>

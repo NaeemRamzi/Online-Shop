@@ -1,9 +1,9 @@
 import React from "react";
 import { useRef, useState, Fragment } from "react";
 
-import Input from "./Input";
+import Input from "../UI/Input";
 
-const MealItemForm = (props: any) => {
+const ProductForm = (props: any) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef<any>();
 
@@ -48,4 +48,4 @@ const MealItemForm = (props: any) => {
   );
 };
 
-export default MealItemForm;
+export default ProductForm;

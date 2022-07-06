@@ -1,12 +1,9 @@
 /* eslint-disable react/display-name */
-/* eslint-disable react/prop-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React from "react";
 
 import classes from "./Input.module.css";
-
-// type input = {
-//     // input:object;
-//   };
 
 const Input = React.forwardRef((props: any, ref) => {
   return (
