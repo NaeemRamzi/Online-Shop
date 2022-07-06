@@ -5,7 +5,6 @@ import ITypes from "../components/Interface/types";
 type contextType = {
     items: ITypes[];
     totalAmount: number;
-    itemTotal:any;
     addItem: (item: ITypes) => void;
     removeItem: (id: number) => void;
   };
@@ -13,7 +12,6 @@ type contextType = {
 const CartContext = React.createContext<contextType>({
   items: [],
   totalAmount: 0,
-  itemTotal:0,
   addItem: () => {},
   removeItem: () => {},
 });

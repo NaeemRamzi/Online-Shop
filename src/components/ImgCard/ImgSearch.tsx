@@ -35,4 +35,4 @@ const ImgSearch = ({ onSearch }: any) => {
   );
 };
 
-export default ImgSearch;
+export default React.memo(ImgSearch);

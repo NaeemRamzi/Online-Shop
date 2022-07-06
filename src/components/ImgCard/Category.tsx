@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { Fragment, useEffect, useState, useRef } from "react";
+import React, { Fragment } from "react";
 
 const Category = ({ categoryTerm, changeCategory }: any) => {
   return (
@@ -21,4 +21,4 @@ const Category = ({ categoryTerm, changeCategory }: any) => {
   );
 };
 
-export default Category;
+export default React.memo(Category);

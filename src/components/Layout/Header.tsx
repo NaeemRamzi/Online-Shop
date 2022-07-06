@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import React, { Fragment, useEffect, useState } from "react";
 import HeaderLogo from "./HeaderLogo";
 import UserIcon from "../../assets/user.png";
@@ -7,7 +6,6 @@ import CartLogo from "../../assets/shopping-cart.png";
 import { useContext } from "react";
 import CartContext from "../../store/cart-context";
 import { Link } from "react-router-dom";
-
 
 const Header: React.FC = () => {
   const [user, setUser] = useState<any>([]);
@@ -21,14 +19,10 @@ const Header: React.FC = () => {
     const userName = async () => {
       const response = await fetch("https://fakestoreapi.com/users/1");
       const userData = await response.json();
-      console.log(userData);
-
       setUser(userData);
     };
     userName();
   }, []);
-
-  console.log(user);
 
   return (
     <Fragment>
@@ -52,7 +46,9 @@ const Header: React.FC = () => {
           {/* Left Part (username and user icon) */}
           <div className="flex mt-3">
             <img className="ml-5 h-10" src={UserIcon} />
-            <h1 className="mt-2 ml-3">Hi, {user.username}</h1>
+            <h1 className="mt-2 ml-3 whitespace-nowrap">
+              Hi, {user.username} &nbsp;
+            </h1>
           </div>
           {/* center (the logo) */}
           <div className="xl:mr-20px lg:mr-20px md:mr-20px sm:mr-20px xs:mr-0 mb-2 ">

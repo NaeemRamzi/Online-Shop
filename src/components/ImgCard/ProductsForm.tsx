@@ -3,8 +3,7 @@ import { useRef, useState, Fragment } from "react";
 
 import Input from "../UI/Input";
 
-const MealItemForm = (props: any) => {
-  const [count, setCount] = useState(0);
+const ProductForm = (props: any) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef<any>();
 
@@ -25,7 +24,6 @@ const MealItemForm = (props: any) => {
 
     props.onAddToCart(enteredAmountNumber);
   };
-  
 
   return (
     <Fragment>
@@ -41,10 +39,7 @@ const MealItemForm = (props: any) => {
             defaultValue: "1",
           }}
         />
-        <button
-          onClick={() => setCount(count + 1)}
-          className="bg-blue-100 p-2 text-white-100 lg:text-base md:whitespace-nowrap md:text-sm sm:whitespace-nowrap sm:text-xxs xs:text-xxs "
-        >
+        <button className="bg-blue-100 p-2 text-white-100 lg:text-base md:whitespace-nowrap md:text-sm sm:whitespace-nowrap sm:text-xxs xs:text-xxs ">
           Add to Cart
         </button>
         {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
@@ -53,4 +48,4 @@ const MealItemForm = (props: any) => {
   );
 };
 
-export default MealItemForm;
+export default ProductForm;
