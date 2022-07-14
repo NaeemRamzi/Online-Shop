@@ -51,10 +51,12 @@ const CartItem = ({
             </div>
           </td>
           <td className="p-5  w-20 xl:mr-14 lg:mr-12 md:mr-10">{price}$</td>
-          <td className="flex p-5  w-20 font-bold xl:mr-4 lg:mr-3 md:mr-3">
+          <td className="flex p-5  w-20 font-bold xl:mr-14 lg:mr-3 md:mr-3">
             {price.toFixed(0) * amount.toFixed(0)}$
+          </td>
+          <td className="p-5 lg:mr-4">
             <button onClick={onDelete} className="ml-2 text-red-100">
-              Del
+              <img src={Delete} />
             </button>
           </td>
         </div>

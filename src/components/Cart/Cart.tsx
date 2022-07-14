@@ -52,6 +52,8 @@ const Cart = () => {
         <th className="p-5">Quantity</th>
         <th className="p-5">Price</th>
         <th className="p-5">Total Price</th>
+        <th className="p-5">Action</th>
+        
       </tr>
       <div>{cartItems}</div>
       <CartFooter />
