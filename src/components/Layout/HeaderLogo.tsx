@@ -26,7 +26,7 @@ const HeaderLogo = () => {
           strokeMiterlimit="2.613"
         />
       </g>
-    </svg>
+    </svg> 
   );
 };
 

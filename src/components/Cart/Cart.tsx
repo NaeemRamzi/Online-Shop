@@ -16,12 +16,15 @@ const Cart = () => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
+
+
   const cartItems = (
     <div>
       {cartCtx.items.map((item, i) => (
         <CartItem
           number={i}
           key={item.id}
+          itemID={item.id}
           title={item.title}
           amount={item.amount}
           price={item.price}

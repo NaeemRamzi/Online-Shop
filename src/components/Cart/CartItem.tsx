@@ -1,7 +1,37 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
+import Delete from "../../assets/delete.png";
+import axios, { Axios } from "axios";
 
 const CartItem = (props: any) => {
   const price = `$${props.price.toFixed(2)}`;
+  const [product, setProduct] = useState();
+
+  useEffect(() => {
+    getProducts;
+  }, []);
+
+  function getProducts() {
+    fetch("https://fakestoreapi.com/products").then((result) => {
+      result.json().then((resp) => {
+        setProduct(resp);
+      });
+    });
+  }
+  console.log(product);
+
+  const deleteItem = (id: any, e: any) => {
+    e.preventDefault(),
+      axios.delete(`https://fakestoreapi.com/products/${id}`).then;
+    (res: any) => console.log("DELETED", res);
+    // axios.delete("https://fakestoreapi.com/products/3", {
+    //   method: "DELETE",
+    // }).then((result)=>{
+    //   result.json().then((resp)=>{
+    //     console.warn(resp);
+    //     getProducts();
+    //   });
+    // });
+  };
 
   return (
     <Fragment>
@@ -34,8 +64,14 @@ const CartItem = (props: any) => {
             </div>
           </td>
           <td className="p-5  w-20 xl:mr-14 lg:mr-12 md:mr-10">{price}$</td>
-          <td className="p-5  w-20 font-bold xl:mr-4 lg:mr-3 md:mr-3">
+          <td className="flex p-5  w-20 font-bold xl:mr-4 lg:mr-3 md:mr-3">
             {props.price.toFixed(0) * props.amount.toFixed(0)}$
+            <button
+              onClick={(e) => deleteItem(props.id, e)}
+              className="ml-1 text-red-100"
+            >
+              Del
+            </button>
           </td>
         </div>
       </tbody>

@@ -30,7 +30,7 @@ const ImgSearch = ({ onSearch }: any) => {
             placeholder="Search..."
           ></input>
         </div>
-      </div>
+      </div> 
     </Fragment>
   );
 };

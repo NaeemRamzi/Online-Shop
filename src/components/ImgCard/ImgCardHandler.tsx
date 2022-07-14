@@ -23,7 +23,7 @@ const ImgCardHandler = () => {
       setFake(data);
       setIsLoading(false);
     };
-    fakestore();
+    fakestore(); 
   }, []);
 
   const onSearch = useCallback((searchTerm: string) => {
