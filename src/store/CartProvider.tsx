@@ -7,6 +7,7 @@ type contextType = {
   totalAmount: number;
   addItem: (item: ITypes) => void;
   removeItem: (id: number) => void;
+  deleteItem: (id:number) => void;
 };
 
 const defaultCartState = {
@@ -15,6 +16,8 @@ const defaultCartState = {
 };
 
 const cartReducer = (state: any, action: any) => {
+ 
+
   if (action.type === "ADD") {
     const updatedTotalAmount =
       state.totalAmount + action.item.price * action.item.amount;
@@ -61,6 +64,36 @@ const cartReducer = (state: any, action: any) => {
     };
   }
 
+  // if (action.type === "REMOVE_ITEM") {
+  //   return {
+  //     ...state,
+  //     item: state.item.filter((curElem: any) => {
+  //       return curElem.id !== action.id;
+  //     }),
+  //   };
+  // }
+
+  if (action.type === "DELETE") {
+    const existingCartItemIndex = state.items.findIndex(
+      (item: any) => item.id === action.id
+    );
+    const existingItem = state.items[existingCartItemIndex];
+    const updatedTotalAmount = state.totalAmount - existingItem.price;
+    let updatedItems;
+    if (existingItem.amount >= 1) {
+      updatedItems = state.items.filter((item: any) => item.id !== action.id);
+    } else {
+      const updatedItem = { ...existingItem, amount: existingItem.amount - 100 };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    }
+
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
   return defaultCartState;
 };
 // mainFN
@@ -70,6 +103,13 @@ const CartProvider: React.FC<PropsWithChildren> = (props) => {
     defaultCartState
   );
 
+  // const deleteItem = (id: number) => {
+  //   return dispatchCartAction({
+  //     type: "REMOVE_ITEM",
+  //     id: id,
+  //   });
+  // };
+
   const addItemToCartHandler = (item: ITypes) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
@@ -78,11 +118,16 @@ const CartProvider: React.FC<PropsWithChildren> = (props) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 
+  const deleteItemFromCartHandler = (id: number) => {
+    dispatchCartAction({ type: "DELETE", id: id });
+  };
+
   const cartContext: contextType = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemToCartHandler,
     removeItem: removeItemFromCartHandler,
+    deleteItem: deleteItemFromCartHandler,
   };
   return (
     <CartContext.Provider value={cartContext}>

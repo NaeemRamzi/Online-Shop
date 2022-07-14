@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 
@@ -12,26 +12,34 @@ const Cart = () => {
     cartCtx.removeItem(id);
   };
 
+  const cartItemDeleteHandler = (id: number) => {
+    cartCtx.deleteItem(id);
+  };
+
   const cartItemAddHandler = (item: any) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
-
+ 
 
   const cartItems = (
     <div>
       {cartCtx.items.map((item, i) => (
-        <CartItem
-          number={i}
-          key={item.id}
-          itemID={item.id}
-          title={item.title}
-          amount={item.amount}
-          price={item.price}
-          description={item.description}
-          onRemove={cartItemRemoveHandler.bind(null, item.id)}
-          onAdd={cartItemAddHandler.bind(null, item)}
-        />
+        <>
+          <CartItem
+            number={i}
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            amount={item.amount}
+            price={item.price}
+            description={item.description}
+            onRemove={cartItemRemoveHandler.bind(null, item.id)}
+            onAdd={cartItemAddHandler.bind(null, item)}
+            onDelete={cartItemDeleteHandler.bind(null,item.id)}
+          />
+          
+        </>
       ))}
     </div>
   );

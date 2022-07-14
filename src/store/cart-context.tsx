@@ -7,6 +7,7 @@ type contextType = {
     totalAmount: number;
     addItem: (item: ITypes) => void;
     removeItem: (id: number) => void;
+    deleteItem:(id:number) => void;
   };
 
 const CartContext = React.createContext<contextType>({
@@ -14,6 +15,7 @@ const CartContext = React.createContext<contextType>({
   totalAmount: 0,
   addItem: () => {},
   removeItem: () => {},
+  deleteItem: () =>{},
 });
 
 export default CartContext;
